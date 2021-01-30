@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('') {
+    stage('Message') {
       steps {
         echo 'Start'
       }
