@@ -15,8 +15,14 @@ pipeline {
     stage('build') {
       steps {
         sh '''env
-ls -l /usr/bin/make
-sleep 9999'''
+
+
+while [ TRUE ];
+do
+    echo waiting
+    sleep 1
+done
+'''
       }
     }
 
