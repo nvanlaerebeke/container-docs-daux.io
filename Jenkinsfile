@@ -16,8 +16,7 @@ pipeline {
       steps {
         sh '''env
 ls -l /usr/bin/make
-sleep 9999
-make push'''
+sleep 9999'''
       }
     }
 
