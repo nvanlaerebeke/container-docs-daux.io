@@ -12,5 +12,11 @@ pipeline {
       }
     }
 
+    stage('build') {
+      steps {
+        sh 'find . '
+      }
+    }
+
   }
 }
