@@ -14,7 +14,9 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'make push'
+        sh '''env
+ls -l /usr/bin/make
+make push'''
       }
     }
 
