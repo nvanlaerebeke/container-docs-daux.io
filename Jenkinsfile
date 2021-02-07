@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      label 'agent' 
+      yamlFile 'build.yaml'
+  }
   stages {
     stage('Message') {
       steps {
@@ -12,6 +16,5 @@ pipeline {
         sh 'make push'
       }
     }
-
   }
 }
