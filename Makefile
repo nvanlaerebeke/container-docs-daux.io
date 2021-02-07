@@ -1,4 +1,4 @@
-.PHONY: init build push
+.PHONY: build push
 
 REPO?="registry.crazyzone.be"
 NAME?="daux.io"
