@@ -3,14 +3,13 @@ pipeline {
   stages {
     stage('Message') {
       steps {
-        echo 'Start'
+        echo 'Start Building Container'
       }
     }
 
     stage('build') {
       steps {
-        sh '''find . 
-make push'''
+        sh 'make push'
       }
     }
 
