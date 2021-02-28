@@ -12,9 +12,15 @@ A makefile that builds the docker container is included, to build run:
 make build
 ```
 
+This will result in a local image tagged with the specified parameters(or default).  
+See the 'Additional Options' section for more information about the available options.  
+
+To push the image to the repository use the command below.  
+
 ## Pushing the image to a repository
 
-The included makefile can also push the build image.
+The included makefile can also push the build image, first the container is build with the given options and once build it is pushed to the repository.
+
 To build and push, run:
 
 ```
@@ -29,6 +35,7 @@ There are several options that can be passed to customize the build process:
 - NAME(default: daux.io): name of the image
 - TAG(default: latest): tag name
 
+
 ## Using the image
 
 
@@ -38,7 +45,11 @@ Example:
 
 ```
 docker run --rm -ti \
-    -v "source:/source" \
+    -v "/path/to/source/on/host:/source" \
     registry.crazyzone.be/daux.io
 ```
 
+## Building with Jenkins
+
+The included Jenkinsfile is made to be run and deploy on the crazyzone network.  
+The build.yaml file can be modified to use a different base image, note that this image needs to be able to run docker-outside-of-docker and have 'make' available.
