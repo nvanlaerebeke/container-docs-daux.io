@@ -1,8 +1,15 @@
-.PHONY: build push
+.PHONY: build push env
 
-REPO?="registry.crazyzone.be"
-NAME?="daux.io"
-TAG?="latest"
+env:
+ifeq ($(NAME),)
+	echo "NAME not set"
+	exit 1
+endif
+
+ifeq ($(TAG),)
+	echo "TAG not set"
+	exit 1
+endif
 
 ifeq ($(REPO),)
 	FULLNAME:=$(NAME):$(TAG)

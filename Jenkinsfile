@@ -1,4 +1,9 @@
 pipeline {
+  environment { 
+      REPO = 'registry.crazyzone.be'
+      NAME = 'daux.io'
+      TAG = "latest"
+  }  
   agent {
     kubernetes {
       label 'agent'
@@ -12,6 +17,5 @@ pipeline {
         sh 'make push'
       }
     }
-
   }
 }
