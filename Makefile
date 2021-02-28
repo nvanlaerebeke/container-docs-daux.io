@@ -17,7 +17,7 @@ else
 	FULLNAME:=$(REPO)/$(NAME):$(TAG)
 endif
 
-build: 
+build: env
 	docker build . -t "$(FULLNAME)"
 
 push: build
