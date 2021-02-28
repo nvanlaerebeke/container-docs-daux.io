@@ -4,7 +4,6 @@ pipeline {
       label 'agent'
       yamlFile 'build.yaml'
     }
-
   }
   stages {
     stage('build') {
@@ -12,7 +11,6 @@ pipeline {
         sh 'REPO=$REPO NAME=$NAME TAG=$TAG make push'
       }
     }
-
   }
   parameters {
     string(defaultValue: 'registry.crazyzone.be', name: 'REPO', trim: true)
