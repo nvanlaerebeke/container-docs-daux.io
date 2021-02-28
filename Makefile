@@ -1,6 +1,5 @@
-.PHONY: build push env
+.PHONY: build push
 
-env:
 ifeq ($(NAME),)
 	echo "NAME not set"
 	exit 1
@@ -12,12 +11,12 @@ ifeq ($(TAG),)
 endif
 
 ifeq ($(REPO),)
-	FULLNAME:=$(NAME):$(TAG)
-else 
-	FULLNAME:=$(REPO)/$(NAME):$(TAG)
+FULLNAME:=$(NAME):$(TAG)
+else
+FULLNAME:=$(REPO)/$(NAME):$(TAG)
 endif
 
-build: env
+build: 
 	docker build . -t "$(FULLNAME)"
 
 push: build
