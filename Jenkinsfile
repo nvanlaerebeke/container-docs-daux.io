@@ -2,13 +2,33 @@ pipeline {
   agent {
     kubernetes {
       label 'agent'
-      yamlFile 'build.yaml'
+      yaml '''
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+'''
     }
   }
   stages {
-    stage('build') {
+    stage('Build with Kaniko') {
       steps {
-        sh 'REPO=$REPO NAME=$NAME TAG=$TAG make push'
+        git(url: 'https://github.com/nvanlaerebeke/containers-docs-daux.io', credentialsId: 'github')
+        container(name: 'kaniko') {
+          sh '''
+            /kaniko/executor \
+            --dockerfile `pwd`/Dockerfile \
+            --context `pwd` \
+            --destination=$REPO/$NAME:$TAG
+            '''
+        }        
       }
     }
   }
