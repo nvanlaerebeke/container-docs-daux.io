@@ -20,7 +20,7 @@ spec:
   stages {
     stage('Build with Kaniko') {
       steps {
-        git(url: 'https://github.com/nvanlaerebeke/containers-docs-daux.io.git', credentialsId: 'github')
+        git(url: 'https://github.com/nvanlaerebeke/containers-docs-daux.io', credentialsId: 'github')
         container(name: 'kaniko') {
           sh '''
             /kaniko/executor \
