@@ -9,10 +9,10 @@ This is a container that can build markdown documentation with daux.io
 A makefile that builds the docker container is included, to build run:
 
 ```
-make build
+NAME="daux.io" TAG="latest" make build
 ```
 
-This will result in a local image tagged with the specified parameters(or default).  
+This will result in a local image tagged with as "daux.io:latest".  
 See the 'Additional Options' section for more information about the available options.  
 
 To push the image to the repository use the command below.  
@@ -24,12 +24,14 @@ The included makefile can also push the build image, first the container is buil
 To build and push, run:
 
 ```
-make push
+NAME="daux.io" TAG="latest" make push
 ```
 
 ### Additional Options
 
-There are several options that can be passed to customize the build process:
+There are several options that can be passed to customize the build process.  
+The defaults are only set when using the Jenkins pipeline.
+
 
 - REPO(default: registry.crazyzone.be): repository to push the image to
 - NAME(default: daux.io): name of the image
