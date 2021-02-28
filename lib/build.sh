@@ -2,6 +2,7 @@
 cd /source
 
 if [ -d /source/docs ];
+then
     echo "'docs' folder does not exist in /source"
     ls -l /source
     exit 1
