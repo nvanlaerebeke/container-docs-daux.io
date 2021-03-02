@@ -24,7 +24,7 @@ spec:
             sh 'pwd'
             sh """
             #!/busybox/sh 
-            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --insecure --skip-tls-verify --destination gcr.io/cloudorbit/app/dev/jenkinsapp:$BUILD_NUMBER --destination gcr.io/cloudorbit/app/dev/jenkinsapp:latest
+            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest
             """
         }
       }
