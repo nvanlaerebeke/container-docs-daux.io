@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      yaml '''
+      yaml """
 kind: Pod
 metadata:
   name: kaniko
@@ -13,18 +13,18 @@ spec:
     command:
     - cat
     tty: true
-'''
+"""
     }
-
   }
   stages {
     stage('build') {
       steps {
-        sh '''ls -lah
-/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest'''
+        container('postgres') {
+            sh 'ls -lah',
+            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest
+        }
       }
     }
-
   }
   parameters {
     string(defaultValue: 'registry.crazyzone.be', name: 'REPO', trim: true)
