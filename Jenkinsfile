@@ -19,7 +19,7 @@ spec:
   stages {
     stage('build') {
       steps {
-        sh 'REPO=$REPO NAME=$NAME TAG=$TAG make push'
+        sh 'ls -lah'
       }
     }
   }
