@@ -21,13 +21,6 @@ spec:
     volumeMounts:
     - name: kaniko-cache
       mountPath: /cache
-  - name: kaniko-warmer
-    image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
-    command:
-    - cat
-    volumeMounts:
-    - name: kaniko-cache
-      mountPath: /cache
 '''
     }
 
@@ -35,13 +28,9 @@ spec:
   stages {
     stage('build') {
       steps {
-        container(name: 'kaniko-warmer', shell: '/busybox/sh') {
-          sh '''#!/busybox/sh 
-            '''
-        }
-
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
+/kaniko/warmer --cache-dir=/cache --image=php:7-cli          
 /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true --cache-repo registry.crazyzone.be/cache
             '''
         }
