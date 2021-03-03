@@ -13,7 +13,7 @@ spec:
         path: /volume1/docker-storage/kaniko/cache
   containers:
   - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
+    image: gcr.io/kaniko-project/executor@sha256:e00dfdd4a44097867c8ef671e5a7f3e31d94bd09406dbdfba8a13a63fc6b8060
     imagePullPolicy: Always
     command:
     - /busybox/cat
@@ -22,7 +22,7 @@ spec:
     - name: kaniko-cache
       mountPath: /cache
   - name: kaniko-warmer
-    image: gcr.io/kaniko-project/warmer:eda57e5400e4cdecccb2a3d9db445e57e81a9c4f
+    image: gcr.io/kaniko-project/warmer@sha256:7bdae16de697e0c05e0fd8844b5f7d313692f8adc8d052bcf99b60d1e86f4daf
     imagePullPolicy: Always
     command:
     - /busybox/cat
