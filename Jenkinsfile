@@ -37,7 +37,7 @@ spec:
   stages {
     stage('build') {
       steps {
-container(name: 'kaniko', shell: '/busybox/sh') {
+container(name: 'kaniko-cache', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
 /kaniko/warmer --cache-dir=/cache --image=php:7-cli          
             '''
