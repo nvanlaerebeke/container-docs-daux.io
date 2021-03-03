@@ -37,7 +37,6 @@ spec:
       steps {
         container(name: 'kaniko-warmer', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
-/kaniko/warmer --cache-dir=/cache --image=php:7-cli
             '''
         }
 
