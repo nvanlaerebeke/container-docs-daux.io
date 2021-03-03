@@ -45,7 +45,6 @@ spec:
         }        
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
-env
 VERSION=`cat VERSION`
 if [ $GIT_LOCAL_BRANCH == "main" ];
 then
