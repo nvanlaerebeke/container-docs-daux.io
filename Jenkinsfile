@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      yaml """
+      yaml '''
 kind: Pod
 metadata:
   name: kaniko
@@ -28,26 +28,28 @@ spec:
     volumeMounts:
     - name: kaniko-cache
       mountPath: /cache
-"""
+'''
     }
+
   }
   stages {
     stage('build') {
       steps {
         container(name: 'kaniko-warmer', shell: '/busybox/sh') {
-            sh """
-            #!/busybox/sh 
-            /kaniko/warmer --cache-dir=/cache --image=php:7-cli
-            """
+          sh '''#!/busybox/sh 
+/kaniko/warmer --cache-dir=/cache --image=php:7-cli
+            '''
         }
+
         container(name: 'kaniko', shell: '/busybox/sh') {
-            sh """
-            #!/busybox/sh 
-            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true --cache-repo registry.crazyzone.be/cache
-            """
+          sh '''#!/busybox/sh 
+/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true --cache-repo registry.crazyzone.be/cache
+            '''
         }
+
       }
     }
+
   }
   parameters {
     string(defaultValue: 'registry.crazyzone.be', name: 'REPO', trim: true)
