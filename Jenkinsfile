@@ -52,10 +52,15 @@ then
 else
   TAG=$GIT_LOCAL_BRANCH
 fi
-/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:$TAG --destination registry.crazyzone.be/daux.io:$VERSION --cache=true --cache-repo registry.crazyzone.be/cache
+/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination $REPO/$NAME:$TAG --destination $REPO/$NAME:$VERSION --cache=true --cache-repo $REPO/cache
             '''
         }
       }
     }
+
+  }
+  parameters {
+    string(defaultValue: 'registry.crazyzone.be', name: 'REPO', trim: true)
+    string(defaultValue: 'daux.io', name: 'NAME', trim: true)
   }
 }
