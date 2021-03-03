@@ -54,4 +54,4 @@ docker run --rm -ti \
 ## Building with Jenkins
 
 The included Jenkinsfile is made to be run and deploy on the crazyzone network.  
-The build.yaml file can be modified to use a different base image, note that this image needs to be able to run docker-outside-of-docker and have 'make' available.
+The Jenkinsfile can be modified can be modified to apply to other environments

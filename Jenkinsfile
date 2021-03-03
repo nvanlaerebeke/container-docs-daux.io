@@ -46,7 +46,7 @@ spec:
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
 VERSION=`cat VERSION`
-if [ $GIT_LOCAL_BRANCH == "main" ];
+if [[ $GIT_LOCAL_BRANCH == "main" || $GIT_LOCAL_BRANCH == "master" ]];
 then
   TAG=latest
 else
