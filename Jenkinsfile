@@ -22,7 +22,7 @@ spec:
     - name: kaniko-cache
       mountPath: /cache
   - name: kaniko-warmer
-    image: gcr.io/kaniko-project/warmer:latest
+    image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
     command:
     - cat
     volumeMounts:
