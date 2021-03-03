@@ -57,11 +57,5 @@ fi
         }
       }
     }
-
-  }
-  parameters {
-    string(defaultValue: 'registry.crazyzone.be', name: 'REPO', trim: true)
-    string(defaultValue: 'daux.io', name: 'NAME', trim: true)
-    string(defaultValue: 'latest', name: 'TAG', trim: true)
   }
 }
