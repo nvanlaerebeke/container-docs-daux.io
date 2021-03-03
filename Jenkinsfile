@@ -22,7 +22,7 @@ spec:
     - name: kaniko-cache
       mountPath: /cache
   - name: kaniko-warmer
-    image: gcr.io/kaniko-project/warmer:debug-539ddefcae3fd6b411a95982a830d987f4214251
+    image: gcr.io/kaniko-project/warmer:eda57e5400e4cdecccb2a3d9db445e57e81a9c4f
     imagePullPolicy: Always
     command:
     - cat
