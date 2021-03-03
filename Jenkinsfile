@@ -16,7 +16,7 @@ spec:
     image: gcr.io/kaniko-project/executor@sha256:e00dfdd4a44097867c8ef671e5a7f3e31d94bd09406dbdfba8a13a63fc6b8060
     imagePullPolicy: Always
     command:
-    - /busybox/cat
+    - sleep 999999
     tty: true
     volumeMounts:
     - name: kaniko-cache
