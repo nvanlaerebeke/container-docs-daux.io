@@ -6,6 +6,11 @@ kind: Pod
 metadata:
   name: kaniko
 spec:
+  volumes:
+    - name: kaniko-cache
+      nfs: 
+        server: nas.crazyzone.be 
+        path: /volume1/docker-storage/kaniko/cache
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
@@ -13,6 +18,9 @@ spec:
     command:
     - cat
     tty: true
+    volumeMounts:
+    - name: kaniko-cache
+      mountPath: /cache
 """
     }
   }
@@ -24,7 +32,7 @@ spec:
             sh 'pwd'
             sh """
             #!/busybox/sh 
-            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true
+            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true -cache-dir=/cache
             """
         }
       }
