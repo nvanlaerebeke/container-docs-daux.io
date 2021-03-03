@@ -22,6 +22,14 @@ spec:
     volumeMounts:
     - name: kaniko-cache
       mountPath: /cache
+  - name: kaniko-warmer
+    image: gcr.io/kaniko-project/warmer@sha256:7bdae16de697e0c05e0fd8844b5f7d313692f8adc8d052bcf99b60d1e86f4daf
+    imagePullPolicy: Always
+    command:
+    - /kaniko/warmer --cache-dir=/cache --image=php:7-cli
+    volumeMounts:
+    - name: kaniko-cache
+      mountPath: /cache      
 '''
     }
 
