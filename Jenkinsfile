@@ -45,7 +45,9 @@ spec:
         }        
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
-/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true --cache-repo registry.crazyzone.be/cache
+VERSION=`cat VERSION`
+env          
+/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --destination registry.crazyzone.be/daux.io:$VERSION --cache=true --cache-repo registry.crazyzone.be/cache
             '''
         }
       }
