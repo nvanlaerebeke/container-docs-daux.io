@@ -29,7 +29,7 @@ spec:
     imagePullPolicy: Always
     tty: true
     command:
-    - /usr/bin/cat
+    - cat
     env:
     - name: PATH
       value: "/busybox:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:a"
