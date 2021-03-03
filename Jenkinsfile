@@ -17,10 +17,11 @@ spec:
     imagePullPolicy: Always
     tty: true
     command:
-    - cat
+    - sleep
+    - infinity
     env:
     - name: PATH
-      value: "/busybox:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:a"    
+      value: "/busybox:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"    
     volumeMounts:
     - name: kaniko-cache
       mountPath: /cache
@@ -29,10 +30,11 @@ spec:
     imagePullPolicy: Always
     tty: true
     command:
-    - cat
+    - sleep
+    - infinity
     env:
     - name: PATH
-      value: "/busybox:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:a"
+      value: "/busybox:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     volumeMounts:
     - name: kaniko-cache
       mountPath: /cache
