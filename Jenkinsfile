@@ -46,8 +46,13 @@ spec:
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh 
 VERSION=`cat VERSION`
-env          
-/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --destination registry.crazyzone.be/daux.io:$VERSION --cache=true --cache-repo registry.crazyzone.be/cache
+if [ $GIT_LOCAL_BRANCH == "main" ];
+then
+  TAG=latest
+else
+  TAG=$GIT_LOCAL_BRANCH
+fi
+/kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:$TAG --destination registry.crazyzone.be/daux.io:$VERSION --cache=true --cache-repo registry.crazyzone.be/cache
             '''
         }
       }
