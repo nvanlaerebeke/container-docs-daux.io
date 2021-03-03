@@ -32,7 +32,7 @@ spec:
             sh 'pwd'
             sh """
             #!/busybox/sh 
-            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true -cache-dir=/cache
+            /kaniko/executor --dockerfile Dockerfile --context `pwd`/ --verbosity debug --destination registry.crazyzone.be/daux.io:latest --cache=true --cache-dir=/cache
             """
         }
       }
